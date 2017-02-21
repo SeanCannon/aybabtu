@@ -3,7 +3,8 @@
 
 *A simple and convenient API for converting data between decimal, hexadecimal, and binary.*
 
-[![Build Status](https://travis-ci.org/SeanCannon/aybabtu.svg?branch=master)](https://travis-ci.org/SeanCannon/aybabtu) [![Coverage Status](https://coveralls.io/repos/SeanCannon/aybabtu/badge.svg?branch=master&service=github)](https://coveralls.io/github/SeanCannon/aybabtu?branch=master) [![npm version](http://img.shields.io/npm/v/aybabtu.svg)](https://npmjs.org/package/aybabtu) [![Dependency Status](https://david-dm.org/SeanCannon/aybabtu.svg)](https://david-dm.org/SeanCannon/aybabtu)
+[![Build Status](https://travis-ci.org/SeanCannon/aybabtu.svg?branch=master)](https://travis-ci.org/SeanCannon/aybabtu) [![npm version](http://img.shields.io/npm/v/aybabtu.svg)](https://npmjs.org/package/aybabtu) [![Dependency Status](https://david-dm.org/SeanCannon/aybabtu.svg)](https://david-dm.org/SeanCannon/aybabtu)
+
 
 ## Install
 
@@ -20,11 +21,9 @@ $ npm test
 ## Usage
 
 ```js
-
 const base = require('aybabtu');
 
 base.dec2hex('42');  // '2a'
-
 ```
 
 ## Decimal : Base 10
