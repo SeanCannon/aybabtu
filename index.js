@@ -1,16 +1,40 @@
 'use strict';
 
-const BASE_BIN = 2,
-      BASE_HEX = 16,
-      BASE_DEC = 10;
+const R = require('ramda');
 
-const aybabtu = (s, baseFrom, baseTo) => parseInt(s, baseFrom).toString(baseTo);
+const bases = require('./constants').BASE;
 
-module.exports = {
-  bin2dec : s => aybabtu(s, BASE_BIN, BASE_DEC),
-  bin2hex : s => aybabtu(s, BASE_BIN, BASE_HEX),
-  dec2bin : s => aybabtu(s, BASE_DEC, BASE_BIN),
-  dec2hex : s => aybabtu(s, BASE_DEC, BASE_HEX),
-  hex2bin : s => aybabtu(s, BASE_HEX, BASE_BIN),
-  hex2dec : s => aybabtu(s, BASE_HEX, BASE_DEC)
-};
+const isConversion = arr => arr[0] != arr[1];
+
+const makeConversionFunction = R.curry((bases, arr) => {
+  const keyFrom  = arr[0],
+        keyTo    = arr[1],
+        baseFrom = bases[keyFrom],
+        baseTo   = bases[keyTo],
+        fnName   = R.compose(
+          R.join('2'),
+          R.map(R.take(3))
+        )(arr);
+
+  return {
+    [fnName] : (s) => parseInt(s, baseFrom).toString(baseTo)
+  };
+});
+
+const conversionFunctions = R.compose(
+  R.mergeAll,
+  R.map(makeConversionFunction(bases)),
+  R.filter(isConversion),
+  R.apply(R.xprod),
+  R.repeat(R.__, 2),
+  R.keys
+)(bases);
+
+const allYour = R.curry((bases, base, s) => ({
+  areBelongTo : us => parseInt(s, bases[base]).toString(bases[us])
+}));
+
+module.exports = R.mergeAll([
+  { allYour : allYour(bases) },
+  conversionFunctions
+]);
