@@ -1,0 +1,36 @@
+{
+  "name": "aybabtu",
+  "version": "1.0.0",
+  "description": "All Your Base Are Belong To Us",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/seancannon/aybabtu.git"
+  },
+  "scripts": {
+    "test": "./node_modules/.bin/jasmine"
+  },
+  "keywords": [
+    "hex",
+    "hexcode",
+    "hexadecimal",
+    "bin",
+    "binary",
+    "dec",
+    "decimal",
+    "hex2bin",
+    "bin2hex",
+    "hex2dec",
+    "dec2hex",
+    "bin2dec",
+    "dec2bin",
+    "aliencreations",
+    "seancannon"
+  ],
+  "author": "Sean Cannon",
+  "license": "MIT",
+  "devDependencies": {
+    "coveralls": "^2.11.16",
+    "jasmine": "^2.5.3"
+  }
+}
