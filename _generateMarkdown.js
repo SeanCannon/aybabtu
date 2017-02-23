@@ -2,39 +2,10 @@
 
 const R = require('ramda');
 
-const aybabtu = require('./index');
+const aybabtu   = require('./index'),
+      constants = require('./constants');
 
-const __bases = {
-  binary      : 2,
-  ternary     : 3,
-  quaternary  : 4,
-  quinary     : 5,
-  senary      : 6,
-  septenary   : 7,
-  octal       : 8,
-  nonary      : 9,
-  decimal     : 10,
-  undenary    : 11,
-  duodecimal  : 12,
-  hexadecimal : 16,
-  vigesimal   : 20
-};
-
-const COMPARATOR = {
-  binary      : '110010',
-  ternary     : '1212',
-  quaternary  : '302',
-  quinary     : '200',
-  senary      : '122',
-  septenary   : '101',
-  octal       : '62',
-  nonary      : '55',
-  decimal     : '50',
-  undenary    : '46',
-  duodecimal  : '42',
-  hexadecimal : '32',
-  vigesimal   : '2a'
-};
+const uppercase = s => s.charAt(0).toUpperCase() + s.slice(1);
 
 const makePattern = R.compose(
   R.constructN(1, RegExp),
@@ -44,6 +15,14 @@ const makePattern = R.compose(
 );
 
 let currentBase = '';
+
+console.log('## Supported Bases')
+
+R.compose(
+  R.map(base => console.log(' - [' + base + '](#' + base + ')')),
+  R.map(uppercase),
+  R.keys
+)(constants.BASE);
 
 const generateMd = functionName => {
   const pattern = makePattern(functionName);
@@ -66,7 +45,7 @@ const generateMd = functionName => {
     ),
     R.filter(R.compose(R.test(pattern), R.head)),
     R.toPairs
-  )(COMPARATOR);
+  )(constants.COMPARATOR);
 
   const fromBase = R.compose(_base, _from)(bases),
         toBase   = R.compose(_base, _to)(bases),
@@ -76,7 +55,7 @@ const generateMd = functionName => {
   if (currentBase != fromBase) {
     currentBase = fromBase;
 
-    console.log('## ' + fromBase.charAt(0).toUpperCase() + fromBase.slice(1) + ': Base ' + __bases[fromBase]);
+    console.log('## <a name="' + uppercase(fromBase) + '">' + uppercase(fromBase) + '</a>: Base ' + constants.BASE[fromBase]);
     console.log('');
   }
   console.log('### Convert to ' + toBase.charAt(0).toUpperCase() + toBase.slice(1));
