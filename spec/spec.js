@@ -1,58 +1,35 @@
 'use strict';
 
-const R = require('ramda');
+const aybabtu = require('../index');
 
-const aybabtu    = require('../index'),
-      COMPARATOR = require('../constants').COMPARATOR;
+const head = require('../helpers/head'),
+      last = require('../helpers/last'),
+      find = require('../helpers/find');
 
-const makePattern = R.compose(
-  R.constructN(1, RegExp),
-  R.join('|'),
-  R.map(R.concat('^')),
-  R.split('2')
-);
+const {
+        BASE_MAP,
+        BASE_MAP_INDEX_NAME       : METHOD,
+        BASE_MAP_INDEX_COMPARATOR : COMPARATOR
+      } = require('../constants');
 
-const makeAssertion = functionName => {
-  const pattern = makePattern(functionName);
+const isQuickMethod = s => s !== 'allYour';
 
-  const _from = R.head,
-        _to   = R.last,
-        _base = R.view(R.lensIndex(0)),
-        _comp = R.view(R.lensIndex(1));
+const makeAssertion = method => {
+  const pair = method.split('2'),
+        from = head(find(BASE_MAP)(head(pair))),
+        to   = head(find(BASE_MAP)(last(pair)));
 
-  const bases = R.compose(
-    R.ifElse(
-      R.compose(
-        R.equals(R.take(3, functionName)),
-        R.take(3),
-        R.head,
-        R.head
-      ),
-      R.identity,
-      R.reverse
-    ),
-    R.filter(R.compose(R.test(pattern), R.head)),
-    R.toPairs
-  )(COMPARATOR);
-
-  const fromBase = R.compose(_base, _from)(bases),
-        toBase   = R.compose(_base, _to)(bases),
-        fromComp = R.compose(_comp, _from)(bases),
-        toComp   = R.compose(_comp, _to)(bases);
-
-  it(fromBase + ' are belong to ' + toBase, () => {
-    expect(aybabtu[functionName](fromComp)).toBe(toComp);
+  it(`${from[METHOD]} are belong to ${to[METHOD]}`, () => {
+    expect(aybabtu[method](from[COMPARATOR])).toBe(to[COMPARATOR]);
   });
 
-  return bases;
+  it(`api allows conversion from ${from[METHOD]} to ${to[METHOD]}`, () => {
+    expect(aybabtu.allYour(from[METHOD]).areBelongTo(to[METHOD])(from[COMPARATOR])).toBe(to[COMPARATOR]);
+  });
+
+  return method;
 };
 
 describe('all your', () => {
-
-  R.compose(
-    R.map(makeAssertion),
-    R.keys,
-    R.omit(['allYour'])
-  )(aybabtu);
-
+  Object.keys(aybabtu).filter(isQuickMethod).map(makeAssertion);
 });

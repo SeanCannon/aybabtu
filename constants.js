@@ -1,38 +1,25 @@
 'use strict';
 
-const COMPARATOR = {
-  binary      : '110010',
-  ternary     : '1212',
-  quaternary  : '302',
-  quinary     : '200',
-  senary      : '122',
-  septenary   : '101',
-  octal       : '62',
-  nonary      : '55',
-  decimal     : '50',
-  undenary    : '46',
-  duodecimal  : '42',
-  hexadecimal : '32',
-  vigesimal   : '2a'
-};
-
-const BASE = {
-  binary      : 2,
-  ternary     : 3,
-  quaternary  : 4,
-  quinary     : 5,
-  senary      : 6,
-  septenary   : 7,
-  octal       : 8,
-  nonary      : 9,
-  decimal     : 10,
-  undenary    : 11,
-  duodecimal  : 12,
-  hexadecimal : 16,
-  vigesimal   : 20
-};
+const BASE_MAP = [
+  ['bin', 'binary',      2,  '110010'],
+  ['ter', 'ternary',     3,  '1212'],
+  ['qua', 'quaternary',  4,  '302'],
+  ['qui', 'quinary',     5,  '200'],
+  ['sen', 'senary',      6,  '122'],
+  ['sep', 'septenary',   7,  '101'],
+  ['oct', 'octal',       8,  '62'],
+  ['non', 'nonary',      9,  '55'],
+  ['dec', 'decimal',     10, '50'],
+  ['und', 'undenary',    11, '46'],
+  ['duo', 'duodecimal',  12, '42'],
+  ['hex', 'hexidecimal', 16, '32'],
+  ['vig', 'vigesimal',   20, '2a']
+];
 
 module.exports = {
-  COMPARATOR,
-  BASE
+  BASE_MAP,
+  BASE_MAP_INDEX_KEY        : 0,
+  BASE_MAP_INDEX_NAME       : 1,
+  BASE_MAP_INDEX_RADIX      : 2,
+  BASE_MAP_INDEX_COMPARATOR : 3
 };
