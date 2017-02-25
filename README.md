@@ -15,6 +15,7 @@ parseInt(myValue, baseFrom).toString(baseTo)
 
 Why use aybabtu then? 
  - Your app could always use another dependency
+ - 31,200% unit test coverage (pay no attention to the coveralls badge)
  - Magic constants like `16` (base hex) and `10` (base dec) can confuse junior devs
  - Because `parseInt` and `toString` should never be seen together so we hide them for you
  - Somebody set up us the bomb.

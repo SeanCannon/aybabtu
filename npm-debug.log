@@ -1,0 +1,124 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/Users/seancannon/.nvm/versions/node/v6.2.2/bin/node',
+1 verbose cli   '/Users/seancannon/.nvm/versions/node/v6.2.2/bin/npm',
+1 verbose cli   'publish' ]
+2 info using npm@3.9.5
+3 info using node@v6.2.2
+4 verbose publish [ '.' ]
+5 silly cache add args [ '.', null ]
+6 verbose cache add spec .
+7 silly cache add parsed spec Result {
+7 silly cache add   raw: '.',
+7 silly cache add   scope: null,
+7 silly cache add   name: null,
+7 silly cache add   rawSpec: '.',
+7 silly cache add   spec: '/Users/seancannon/Projects/aybabtu',
+7 silly cache add   type: 'directory' }
+8 verbose addLocalDirectory /Users/seancannon/.npm/aybabtu/1.1.3/package.tgz not in flight; packing
+9 verbose correctMkdir /Users/seancannon/.npm correctMkdir not in flight; initializing
+10 info lifecycle aybabtu@1.1.3~prepublish: aybabtu@1.1.3
+11 silly lifecycle aybabtu@1.1.3~prepublish: no script for prepublish, continuing
+12 verbose tar pack [ '/Users/seancannon/.npm/aybabtu/1.1.3/package.tgz',
+12 verbose tar pack   '/Users/seancannon/Projects/aybabtu' ]
+13 verbose tarball /Users/seancannon/.npm/aybabtu/1.1.3/package.tgz
+14 verbose folder /Users/seancannon/Projects/aybabtu
+15 verbose addLocalTarball adding from inside cache /Users/seancannon/.npm/aybabtu/1.1.3/package.tgz
+16 verbose correctMkdir /Users/seancannon/.npm correctMkdir not in flight; initializing
+17 silly cache afterAdd aybabtu@1.1.3
+18 verbose afterAdd /Users/seancannon/.npm/aybabtu/1.1.3/package/package.json not in flight; writing
+19 verbose correctMkdir /Users/seancannon/.npm correctMkdir not in flight; initializing
+20 verbose afterAdd /Users/seancannon/.npm/aybabtu/1.1.3/package/package.json written
+21 silly publish { name: 'aybabtu',
+21 silly publish   version: '1.1.3',
+21 silly publish   description: 'All Your Base Are Belong To Us',
+21 silly publish   main: 'index.js',
+21 silly publish   repository:
+21 silly publish    { type: 'git',
+21 silly publish      url: 'git+https://github.com/seancannon/aybabtu.git' },
+21 silly publish   scripts: { test: 'istanbul cover -x \'**/spec/_helpers/**/*\' ./node_modules/.bin/jasmine' },
+21 silly publish   keywords:
+21 silly publish    [ 'hex',
+21 silly publish      'hexcode',
+21 silly publish      'hexadecimal',
+21 silly publish      'bin',
+21 silly publish      'binary',
+21 silly publish      'dec',
+21 silly publish      'decimal',
+21 silly publish      'hex2bin',
+21 silly publish      'bin2hex',
+21 silly publish      'hex2dec',
+21 silly publish      'dec2hex',
+21 silly publish      'bin2dec',
+21 silly publish      'dec2bin',
+21 silly publish      'aliencreations',
+21 silly publish      'seancannon' ],
+21 silly publish   author: { name: 'Sean Cannon' },
+21 silly publish   license: 'MIT',
+21 silly publish   devDependencies: { coveralls: '^2.11.16', istanbul: '^0.4.5', jasmine: '^2.5.3' },
+21 silly publish   dependencies: {},
+21 silly publish   readme: '# aybabtu\n**All Your Base Are Belong To Us**\n\n*A simple and convenient API for converting data between mathematical bases.*\n\n[![Build Status](https://travis-ci.org/SeanCannon/aybabtu.svg?branch=master)](https://travis-ci.org/SeanCannon/aybabtu) [![npm version](http://img.shields.io/npm/v/aybabtu.svg)](https://npmjs.org/package/aybabtu) [![Dependency Status](https://david-dm.org/SeanCannon/aybabtu.svg)](https://david-dm.org/SeanCannon/aybabtu) [![Coverage Status](https://coveralls.io/repos/github/SeanCannon/aybabtu/badge.svg?branch=master)](https://coveralls.io/github/SeanCannon/aybabtu?branch=master)\n\n\n## Disclaimer\nUse of this library is quite silly since all it is really doing is this:\n\n```\nparseInt(myValue, baseFrom).toString(baseTo)\n```\n\nWhy use aybabtu then? \n - Your app could always use another dependency\n - 31,200% unit test coverage (pay no attention to the coveralls badge)\n - Magic constants like `16` (base hex) and `10` (base dec) can confuse junior devs\n - Because `parseInt` and `toString` should never be seen together so we hide them for you\n - Somebody set up us the bomb.\n\n## Install\n\n```\n$ npm install aybabtu --save\n```\n\nRun the specs\n\n```\n$ npm test\n```\n\n## Usage\n##### Using quick methods\n```js\nconst base = require(\'aybabtu\');\n\nbase.dec2hex(\'42\');  // \'2a\'\n```\n##### Using the master converter\n```js\nconst { allYour } = require(\'aybabtu\');\n\nallYour(\'decimal\').areBelongTo(\'binary\')(50);  // \'110010\'\n```\n\n## Supported Bases\n - [Binary](#Binary)\n - [Ternary](#Ternary)\n - [Quaternary](#Quaternary)\n - [Quinary](#Quinary)\n - [Senary](#Senary)\n - [Septenary](#Septenary)\n - [Octal](#Octal)\n - [Nonary](#Nonary)\n - [Decimal](#Decimal)\n - [Undenary](#Undenary)\n - [Duodecimal](#Duodecimal)\n - [Hexadecimal](#Hexadecimal)\n - [Vigesimal](#Vigesimal)\n \n## <a name="Binary">Binary</a>: Base 2\n\n### Convert to Ternary\nString → String\n```js\nexpect(bin2ter(\'110010\')).toBe(\'1212\');\n```\n### Convert to Quaternary\nString → String\n```js\nexpect(bin2qua(\'110010\')).toBe(\'302\');\n```\n### Convert to Quinary\nString → String\n```js\nexpect(bin2qui(\'110010\')).toBe(\'200\');\n```\n### Convert to Senary\nString → String\n```js\nexpect(bin2sen(\'110010\')).toBe(\'122\');\n```\n### Convert to Septenary\nString → String\n```js\nexpect(bin2sep(\'110010\')).toBe(\'101\');\n```\n### Convert to Octal\nString → String\n```js\nexpect(bin2oct(\'110010\')).toBe(\'62\');\n```\n### Convert to Nonary\nString → String\n```js\nexpect(bin2non(\'110010\')).toBe(\'55\');\n```\n### Convert to Decimal\nString → String\n```js\nexpect(bin2dec(\'110010\')).toBe(\'50\');\n```\n### Convert to Undenary\nString → String\n```js\nexpect(bin2und(\'110010\')).toBe(\'46\');\n```\n### Convert to Duodecimal\nString → String\n```js\nexpect(bin2duo(\'110010\')).toBe(\'42\');\n```\n### Convert to Hexadecimal\nString → String\n```js\nexpect(bin2hex(\'110010\')).toBe(\'32\');\n```\n### Convert to Vigesimal\nString → String\n```js\nexpect(bin2vig(\'110010\')).toBe(\'2a\');\n```\n## <a name="Ternary">Ternary</a>: Base 3\n\n### Convert to Binary\nString → String\n```js\nexpect(ter2bin(\'1212\')).toBe(\'110010\');\n```\n### Convert to Quaternary\nString → String\n```js\nexpect(ter2qua(\'1212\')).toBe(\'302\');\n```\n### Convert to Quinary\nString → String\n```js\nexpect(ter2qui(\'1212\')).toBe(\'200\');\n```\n### Convert to Senary\nString → String\n```js\nexpect(ter2sen(\'1212\')).toBe(\'122\');\n```\n### Convert to Septenary\nString → String\n```js\nexpect(ter2sep(\'1212\')).toBe(\'101\');\n```\n### Convert to Octal\nString → String\n```js\nexpect(ter2oct(\'1212\')).toBe(\'62\');\n```\n### Convert to Nonary\nString → String\n```js\nexpect(ter2non(\'1212\')).toBe(\'55\');\n```\n### Convert to Decimal\nString → String\n```js\nexpect(ter2dec(\'1212\')).toBe(\'50\');\n```\n### Convert to Undenary\nString → String\n```js\nexpect(ter2und(\'1212\')).toBe(\'46\');\n```\n### Convert to Duodecimal\nString → String\n```js\nexpect(ter2duo(\'1212\')).toBe(\'42\');\n```\n### Convert to Hexadecimal\nString → String\n```js\nexpect(ter2hex(\'1212\')).toBe(\'32\');\n```\n### Convert to Vigesimal\nString → String\n```js\nexpect(ter2vig(\'1212\')).toBe(\'2a\');\n```\n## <a name="Quaternary">Quaternary</a>: Base 4\n\n### Convert to Binary\nString → String\n```js\nexpect(qua2bin(\'302\')).toBe(\'110010\');\n```\n### Convert to Ternary\nString → String\n```js\nexpect(qua2ter(\'302\')).toBe(\'1212\');\n```\n### Convert to Quinary\nString → String\n```js\nexpect(qua2qui(\'302\')).toBe(\'200\');\n```\n### Convert to Senary\nString → String\n```js\nexpect(qua2sen(\'302\')).toBe(\'122\');\n```\n### Convert to Septenary\nString → String\n```js\nexpect(qua2sep(\'302\')).toBe(\'101\');\n```\n### Convert to Octal\nString → String\n```js\nexpect(qua2oct(\'302\')).toBe(\'62\');\n```\n### Convert to Nonary\nString → String\n```js\nexpect(qua2non(\'302\')).toBe(\'55\');\n```\n### Convert to Decimal\nString → String\n```js\nexpect(qua2dec(\'302\')).toBe(\'50\');\n```\n### Convert to Undenary\nString → String\n```js\nexpect(qua2und(\'302\')).toBe(\'46\');\n```\n### Convert to Duodecimal\nString → String\n```js\nexpect(qua2duo(\'302\')).toBe(\'42\');\n```\n### Convert to Hexadecimal\nString → String\n```js\nexpect(qua2hex(\'302\')).toBe(\'32\');\n```\n### Convert to Vigesimal\nString → String\n```js\nexpect(qua2vig(\'302\')).toBe(\'2a\');\n```\n## <a name="Quinary">Quinary</a>: Base 5\n\n### Convert to Binary\nString → String\n```js\nexpect(qui2bin(\'200\')).toBe(\'110010\');\n```\n### Convert to Ternary\nString → String\n```js\nexpect(qui2ter(\'200\')).toBe(\'1212\');\n```\n### Convert to Quaternary\nString → String\n```js\nexpect(qui2qua(\'200\')).toBe(\'302\');\n```\n### Convert to Senary\nString → String\n```js\nexpect(qui2sen(\'200\')).toBe(\'122\');\n```\n### Convert to Septenary\nString → String\n```js\nexpect(qui2sep(\'200\')).toBe(\'101\');\n```\n### Convert to Octal\nString → String\n```js\nexpect(qui2oct(\'200\')).toBe(\'62\');\n```\n### Convert to Nonary\nString → String\n```js\nexpect(qui2non(\'200\')).toBe(\'55\');\n```\n### Convert to Decimal\nString → String\n```js\nexpect(qui2dec(\'200\')).toBe(\'50\');\n```\n### Convert to Undenary\nString → String\n```js\nexpect(qui2und(\'200\')).toBe(\'46\');\n```\n### Convert to Duodecimal\nString → String\n```js\nexpect(qui2duo(\'200\')).toBe(\'42\');\n```\n### Convert to Hexadecimal\nString → String\n```js\nexpect(qui2hex(\'200\')).toBe(\'32\');\n```\n### Convert to Vigesimal\nString → String\n```js\nexpect(qui2vig(\'200\')).toBe(\'2a\');\n```\n## <a name="Senary">Senary</a>: Base 6\n\n### Convert to Binary\nString → String\n```js\nexpect(sen2bin(\'122\')).toBe(\'110010\');\n```\n### Convert to Ternary\nString → String\n```js\nexpect(sen2ter(\'122\')).toBe(\'1212\');\n```\n### Convert to Quaternary\nString → String\n```js\nexpect(sen2qua(\'122\')).toBe(\'302\');\n```\n### Convert to Quinary\nString → String\n```js\nexpect(sen2qui(\'122\')).toBe(\'200\');\n```\n### Convert to Septenary\nString → String\n```js\nexpect(sen2sep(\'122\')).toBe(\'101\');\n```\n### Convert to Octal\nString → String\n```js\nexpect(sen2oct(\'122\')).toBe(\'62\');\n```\n### Convert to Nonary\nString → String\n```js\nexpect(sen2non(\'122\')).toBe(\'55\');\n```\n### Convert to Decimal\nString → String\n```js\nexpect(sen2dec(\'122\')).toBe(\'50\');\n```\n### Convert to Undenary\nString → String\n```js\nexpect(sen2und(\'122\')).toBe(\'46\');\n```\n### Convert to Duodecimal\nString → String\n```js\nexpect(sen2duo(\'122\')).toBe(\'42\');\n```\n### Convert to Hexadecimal\nString → String\n```js\nexpect(sen2hex(\'122\')).toBe(\'32\');\n```\n### Convert to Vigesimal\nString → String\n```js\nexpect(sen2vig(\'122\')).toBe(\'2a\');\n```\n## <a name="Septenary">Septenary</a>: Base 7\n\n### Convert to Binary\nString → String\n```js\nexpect(sep2bin(\'101\')).toBe(\'110010\');\n```\n### Convert to Ternary\nString → String\n```js\nexpect(sep2ter(\'101\')).toBe(\'1212\');\n```\n### Convert to Quaternary\nString → String\n```js\nexpect(sep2qua(\'101\')).toBe(\'302\');\n```\n### Convert to Quinary\nString → String\n```js\nexpect(sep2qui(\'101\')).toBe(\'200\');\n```\n### Convert to Senary\nString → String\n```js\nexpect(sep2sen(\'101\')).toBe(\'122\');\n```\n### Convert to Octal\nString → String\n```js\nexpect(sep2oct(\'101\')).toBe(\'62\');\n```\n### Convert to Nonary\nString → String\n```js\nexpect(sep2non(\'101\')).toBe(\'55\');\n```\n### Convert to Decimal\nString → String\n```js\nexpect(sep2dec(\'101\')).toBe(\'50\');\n```\n### Convert to Undenary\nString → String\n```js\nexpect(sep2und(\'101\')).toBe(\'46\');\n```\n### Convert to Duodecimal\nString → String\n```js\nexpect(sep2duo(\'101\')).toBe(\'42\');\n```\n### Convert to Hexadecimal\nString → String\n```js\nexpect(sep2hex(\'101\')).toBe(\'32\');\n```\n### Convert to Vigesimal\nString → String\n```js\nexpect(sep2vig(\'101\')).toBe(\'2a\');\n```\n## <a name="Octal">Octal</a>: Base 8\n\n### Convert to Binary\nString → String\n```js\nexpect(oct2bin(\'62\')).toBe(\'110010\');\n```\n### Convert to Ternary\nString → String\n```js\nexpect(oct2ter(\'62\')).toBe(\'1212\');\n```\n### Convert to Quaternary\nString → String\n```js\nexpect(oct2qua(\'62\')).toBe(\'302\');\n```\n### Convert to Quinary\nString → String\n```js\nexpect(oct2qui(\'62\')).toBe(\'200\');\n```\n### Convert to Senary\nString → String\n```js\nexpect(oct2sen(\'62\')).toBe(\'122\');\n```\n### Convert to Septenary\nString → String\n```js\nexpect(oct2sep(\'62\')).toBe(\'101\');\n```\n### Convert to Nonary\nString → String\n```js\nexpect(oct2non(\'62\')).toBe(\'55\');\n```\n### Convert to Decimal\nString → String\n```js\nexpect(oct2dec(\'62\')).toBe(\'50\');\n```\n### Convert to Undenary\nString → String\n```js\nexpect(oct2und(\'62\')).toBe(\'46\');\n```\n### Convert to Duodecimal\nString → String\n```js\nexpect(oct2duo(\'62\')).toBe(\'42\');\n```\n### Convert to Hexadecimal\nString → String\n```js\nexpect(oct2hex(\'62\')).toBe(\'32\');\n```\n### Convert to Vigesimal\nString → String\n```js\nexpect(oct2vig(\'62\')).toBe(\'2a\');\n```\n## <a name="Nonary">Nonary</a>: Base 9\n\n### Convert to Binary\nString → String\n```js\nexpect(non2bin(\'55\')).toBe(\'110010\');\n```\n### Convert to Ternary\nString → String\n```js\nexpect(non2ter(\'55\')).toBe(\'1212\');\n```\n### Convert to Quaternary\nString → String\n```js\nexpect(non2qua(\'55\')).toBe(\'302\');\n```\n### Convert to Quinary\nString → String\n```js\nexpect(non2qui(\'55\')).toBe(\'200\');\n```\n### Convert to Senary\nString → String\n```js\nexpect(non2sen(\'55\')).toBe(\'122\');\n```\n### Convert to Septenary\nString → String\n```js\nexpect(non2sep(\'55\')).toBe(\'101\');\n```\n### Convert to Octal\nString → String\n```js\nexpect(non2oct(\'55\')).toBe(\'62\');\n```\n### Convert to Decimal\nString → String\n```js\nexpect(non2dec(\'55\')).toBe(\'50\');\n```\n### Convert to Undenary\nString → String\n```js\nexpect(non2und(\'55\')).toBe(\'46\');\n```\n### Convert to Duodecimal\nString → String\n```js\nexpect(non2duo(\'55\')).toBe(\'42\');\n```\n### Convert to Hexadecimal\nString → String\n```js\nexpect(non2hex(\'55\')).toBe(\'32\');\n```\n### Convert to Vigesimal\nString → String\n```js\nexpect(non2vig(\'55\')).toBe(\'2a\');\n```\n## <a name="Decimal">Decimal</a>: Base 10\n\n### Convert to Binary\nString → String\n```js\nexpect(dec2bin(\'50\')).toBe(\'110010\');\n```\n### Convert to Ternary\nString → String\n```js\nexpect(dec2ter(\'50\')).toBe(\'1212\');\n```\n### Convert to Quaternary\nString → String\n```js\nexpect(dec2qua(\'50\')).toBe(\'302\');\n```\n### Convert to Quinary\nString → String\n```js\nexpect(dec2qui(\'50\')).toBe(\'200\');\n```\n### Convert to Senary\nString → String\n```js\nexpect(dec2sen(\'50\')).toBe(\'122\');\n```\n### Convert to Septenary\nString → String\n```js\nexpect(dec2sep(\'50\')).toBe(\'101\');\n```\n### Convert to Octal\nString → String\n```js\nexpect(dec2oct(\'50\')).toBe(\'62\');\n```\n### Convert to Nonary\nString → String\n```js\nexpect(dec2non(\'50\')).toBe(\'55\');\n```\n### Convert to Undenary\nString → String\n```js\nexpect(dec2und(\'50\')).toBe(\'46\');\n```\n### Convert to Duodecimal\nString → String\n```js\nexpect(dec2duo(\'50\')).toBe(\'42\');\n```\n### Convert to Hexadecimal\nString → String\n```js\nexpect(dec2hex(\'50\')).toBe(\'32\');\n```\n### Convert to Vigesimal\nString → String\n```js\nexpect(dec2vig(\'50\')).toBe(\'2a\');\n```\n## <a name="Undenary">Undenary</a>: Base 11\n\n### Convert to Binary\nString → String\n```js\nexpect(und2bin(\'46\')).toBe(\'110010\');\n```\n### Convert to Ternary\nString → String\n```js\nexpect(und2ter(\'46\')).toBe(\'1212\');\n```\n### Convert to Quaternary\nString → String\n```js\nexpect(und2qua(\'46\')).toBe(\'302\');\n```\n### Convert to Quinary\nString → String\n```js\nexpect(und2qui(\'46\')).toBe(\'200\');\n```\n### Convert to Senary\nString → String\n```js\nexpect(und2sen(\'46\')).toBe(\'122\');\n```\n### Convert to Septenary\nString → String\n```js\nexpect(und2sep(\'46\')).toBe(\'101\');\n```\n### Convert to Octal\nString → String\n```js\nexpect(und2oct(\'46\')).toBe(\'62\');\n```\n### Convert to Nonary\nString → String\n```js\nexpect(und2non(\'46\')).toBe(\'55\');\n```\n### Convert to Decimal\nString → String\n```js\nexpect(und2dec(\'46\')).toBe(\'50\');\n```\n### Convert to Duodecimal\nString → String\n```js\nexpect(und2duo(\'46\')).toBe(\'42\');\n```\n### Convert to Hexadecimal\nString → String\n```js\nexpect(und2hex(\'46\')).toBe(\'32\');\n```\n### Convert to Vigesimal\nString → String\n```js\nexpect(und2vig(\'46\')).toBe(\'2a\');\n```\n## <a name="Duodecimal">Duodecimal</a>: Base 12\n\n### Convert to Binary\nString → String\n```js\nexpect(duo2bin(\'42\')).toBe(\'110010\');\n```\n### Convert to Ternary\nString → String\n```js\nexpect(duo2ter(\'42\')).toBe(\'1212\');\n```\n### Convert to Quaternary\nString → String\n```js\nexpect(duo2qua(\'42\')).toBe(\'302\');\n```\n### Convert to Quinary\nString → String\n```js\nexpect(duo2qui(\'42\')).toBe(\'200\');\n```\n### Convert to Senary\nString → String\n```js\nexpect(duo2sen(\'42\')).toBe(\'122\');\n```\n### Convert to Septenary\nString → String\n```js\nexpect(duo2sep(\'42\')).toBe(\'101\');\n```\n### Convert to Octal\nString → String\n```js\nexpect(duo2oct(\'42\')).toBe(\'62\');\n```\n### Convert to Nonary\nString → String\n```js\nexpect(duo2non(\'42\')).toBe(\'55\');\n```\n### Convert to Decimal\nString → String\n```js\nexpect(duo2dec(\'42\')).toBe(\'50\');\n```\n### Convert to Undenary\nString → String\n```js\nexpect(duo2und(\'42\')).toBe(\'46\');\n```\n### Convert to Hexadecimal\nString → String\n```js\nexpect(duo2hex(\'42\')).toBe(\'32\');\n```\n### Convert to Vigesimal\nString → String\n```js\nexpect(duo2vig(\'42\')).toBe(\'2a\');\n```\n## <a name="Hexadecimal">Hexadecimal</a>: Base 16\n\n### Convert to Binary\nString → String\n```js\nexpect(hex2bin(\'32\')).toBe(\'110010\');\n```\n### Convert to Ternary\nString → String\n```js\nexpect(hex2ter(\'32\')).toBe(\'1212\');\n```\n### Convert to Quaternary\nString → String\n```js\nexpect(hex2qua(\'32\')).toBe(\'302\');\n```\n### Convert to Quinary\nString → String\n```js\nexpect(hex2qui(\'32\')).toBe(\'200\');\n```\n### Convert to Senary\nString → String\n```js\nexpect(hex2sen(\'32\')).toBe(\'122\');\n```\n### Convert to Septenary\nString → String\n```js\nexpect(hex2sep(\'32\')).toBe(\'101\');\n```\n### Convert to Octal\nString → String\n```js\nexpect(hex2oct(\'32\')).toBe(\'62\');\n```\n### Convert to Nonary\nString → String\n```js\nexpect(hex2non(\'32\')).toBe(\'55\');\n```\n### Convert to Decimal\nString → String\n```js\nexpect(hex2dec(\'32\')).toBe(\'50\');\n```\n### Convert to Undenary\nString → String\n```js\nexpect(hex2und(\'32\')).toBe(\'46\');\n```\n### Convert to Duodecimal\nString → String\n```js\nexpect(hex2duo(\'32\')).toBe(\'42\');\n```\n### Convert to Vigesimal\nString → String\n```js\nexpect(hex2vig(\'32\')).toBe(\'2a\');\n```\n## <a name="Vigesimal">Vigesimal</a>: Base 20\n\n### Convert to Binary\nString → String\n```js\nexpect(vig2bin(\'2a\')).toBe(\'110010\');\n```\n### Convert to Ternary\nString → String\n```js\nexpect(vig2ter(\'2a\')).toBe(\'1212\');\n```\n### Convert to Quaternary\nString → String\n```js\nexpect(vig2qua(\'2a\')).toBe(\'302\');\n```\n### Convert to Quinary\nString → String\n```js\nexpect(vig2qui(\'2a\')).toBe(\'200\');\n```\n### Convert to Senary\nString → String\n```js\nexpect(vig2sen(\'2a\')).toBe(\'122\');\n```\n### Convert to Septenary\nString → String\n```js\nexpect(vig2sep(\'2a\')).toBe(\'101\');\n```\n### Convert to Octal\nString → String\n```js\nexpect(vig2oct(\'2a\')).toBe(\'62\');\n```\n### Convert to Nonary\nString → String\n```js\nexpect(vig2non(\'2a\')).toBe(\'55\');\n```\n### Convert to Decimal\nString → String\n```js\nexpect(vig2dec(\'2a\')).toBe(\'50\');\n```\n### Convert to Undenary\nString → String\n```js\nexpect(vig2und(\'2a\')).toBe(\'46\');\n```\n### Convert to Duodecimal\nString → String\n```js\nexpect(vig2duo(\'2a\')).toBe(\'42\');\n```\n### Convert to Hexadecimal\nString → String\n```js\nexpect(vig2hex(\'2a\')).toBe(\'32\');\n```\n\n',
+21 silly publish   readmeFilename: 'README.md',
+21 silly publish   gitHead: '9c3d0a13b22671b8fb75b57aafbf641a8d9eed9e',
+21 silly publish   bugs: { url: 'https://github.com/seancannon/aybabtu/issues' },
+21 silly publish   homepage: 'https://github.com/seancannon/aybabtu#readme',
+21 silly publish   _id: 'aybabtu@1.1.3',
+21 silly publish   _shasum: '750d5f8b4788a4cdfa978b1098bb3b7c734035e3',
+21 silly publish   _from: '.' }
+22 verbose getPublishConfig undefined
+23 silly mapToRegistry name aybabtu
+24 silly mapToRegistry using default registry
+25 silly mapToRegistry registry https://registry.npmjs.org/
+26 silly mapToRegistry data Result {
+26 silly mapToRegistry   raw: 'aybabtu',
+26 silly mapToRegistry   scope: null,
+26 silly mapToRegistry   name: 'aybabtu',
+26 silly mapToRegistry   rawSpec: '',
+26 silly mapToRegistry   spec: 'latest',
+26 silly mapToRegistry   type: 'tag' }
+27 silly mapToRegistry uri https://registry.npmjs.org/aybabtu
+28 verbose publish registryBase https://registry.npmjs.org/
+29 silly publish uploading /Users/seancannon/.npm/aybabtu/1.1.3/package.tgz
+30 verbose request uri https://registry.npmjs.org/aybabtu
+31 verbose request sending authorization for write operation
+32 info attempt registry request try #1 at 1:09:10 PM
+33 verbose request using bearer token for auth
+34 verbose request id d9a80903d372f392
+35 http request PUT https://registry.npmjs.org/aybabtu
+36 http 403 https://registry.npmjs.org/aybabtu
+37 verbose headers { 'content-type': 'application/json',
+37 verbose headers   'cache-control': 'max-age=300',
+37 verbose headers   'content-length': '95',
+37 verbose headers   'accept-ranges': 'bytes',
+37 verbose headers   date: 'Sat, 25 Feb 2017 21:09:10 GMT',
+37 verbose headers   via: '1.1 varnish',
+37 verbose headers   connection: 'keep-alive',
+37 verbose headers   'x-served-by': 'cache-sjc3134-SJC',
+37 verbose headers   'x-cache': 'MISS',
+37 verbose headers   'x-cache-hits': '0',
+37 verbose headers   'x-timer': 'S1488056950.153817,VS0,VE189',
+37 verbose headers   vary: 'Accept-Encoding' }
+38 verbose request invalidating /Users/seancannon/.npm/registry.npmjs.org/aybabtu on PUT
+39 error publish Failed PUT 403
+40 verbose stack Error: "You cannot publish over the previously published version 1.1.3." : aybabtu
+40 verbose stack     at makeError (/Users/seancannon/.nvm/versions/node/v6.2.2/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:264:12)
+40 verbose stack     at CachingRegistryClient.<anonymous> (/Users/seancannon/.nvm/versions/node/v6.2.2/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:252:14)
+40 verbose stack     at Request._callback (/Users/seancannon/.nvm/versions/node/v6.2.2/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:172:14)
+40 verbose stack     at Request.self.callback (/Users/seancannon/.nvm/versions/node/v6.2.2/lib/node_modules/npm/node_modules/request/request.js:200:22)
+40 verbose stack     at emitTwo (events.js:106:13)
+40 verbose stack     at Request.emit (events.js:191:7)
+40 verbose stack     at Request.<anonymous> (/Users/seancannon/.nvm/versions/node/v6.2.2/lib/node_modules/npm/node_modules/request/request.js:1067:10)
+40 verbose stack     at emitOne (events.js:101:20)
+40 verbose stack     at Request.emit (events.js:188:7)
+40 verbose stack     at IncomingMessage.<anonymous> (/Users/seancannon/.nvm/versions/node/v6.2.2/lib/node_modules/npm/node_modules/request/request.js:988:12)
+41 verbose statusCode 403
+42 verbose pkgid aybabtu
+43 verbose cwd /Users/seancannon/Projects/aybabtu
+44 error Darwin 16.4.0
+45 error argv "/Users/seancannon/.nvm/versions/node/v6.2.2/bin/node" "/Users/seancannon/.nvm/versions/node/v6.2.2/bin/npm" "publish"
+46 error node v6.2.2
+47 error npm  v3.9.5
+48 error code E403
+49 error "You cannot publish over the previously published version 1.1.3." : aybabtu
+50 error If you need help, you may report this error at:
+50 error     <https://github.com/npm/npm/issues>
+51 verbose exit [ 1, true ]
