@@ -3,7 +3,7 @@
 
 *A simple and convenient API for converting data between mathematical bases.*
 
-[![Build Status](https://travis-ci.org/SeanCannon/aybabtu.svg?branch=master)](https://travis-ci.org/SeanCannon/aybabtu) [![npm version](http://img.shields.io/npm/v/aybabtu.svg)](https://npmjs.org/package/aybabtu) [![Dependency Status](https://david-dm.org/SeanCannon/aybabtu.svg)](https://david-dm.org/SeanCannon/aybabtu)
+[![Build Status](https://travis-ci.org/SeanCannon/aybabtu.svg?branch=master)](https://travis-ci.org/SeanCannon/aybabtu) [![npm version](http://img.shields.io/npm/v/aybabtu.svg)](https://npmjs.org/package/aybabtu) [![Dependency Status](https://david-dm.org/SeanCannon/aybabtu.svg)](https://david-dm.org/SeanCannon/aybabtu) [![Coverage Status](https://coveralls.io/repos/github/SeanCannon/aybabtu/badge.svg?branch=master)](https://coveralls.io/github/SeanCannon/aybabtu?branch=master)
 
 
 ## Disclaimer
