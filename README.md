@@ -1,10 +1,23 @@
 # aybabtu
 **All Your Base Are Belong To Us**
 
-*A simple and convenient API for converting data between decimal, hexadecimal, and binary.*
+*A simple and convenient API for converting data between mathematical bases.*
 
 [![Build Status](https://travis-ci.org/SeanCannon/aybabtu.svg?branch=master)](https://travis-ci.org/SeanCannon/aybabtu) [![npm version](http://img.shields.io/npm/v/aybabtu.svg)](https://npmjs.org/package/aybabtu) [![Dependency Status](https://david-dm.org/SeanCannon/aybabtu.svg)](https://david-dm.org/SeanCannon/aybabtu)
 
+
+## Disclaimer
+Use of this library is quite silly since all it is really doing is this:
+
+```
+parseInt(myValue, baseFrom).toString(baseTo)
+```
+
+Why use aybabtu then? 
+ - Your app could always use another dependency
+ - Magic constants like `16` (base hex) and `10` (base dec) can confuse junior devs
+ - Because `parseInt` and `toString` should never be seen together so we hide them for you
+ - Someone set us up the bomb.
 
 ## Install
 
@@ -19,11 +32,17 @@ $ npm test
 ```
 
 ## Usage
-
+##### Using quick methods
 ```js
 const base = require('aybabtu');
 
 base.dec2hex('42');  // '2a'
+```
+##### Using the master converter
+```js
+const { allYour } = require('aybabtu');
+
+allYour('decimal').areBelongTo('binary')(50);  // '110010'
 ```
 
 ## Supported Bases

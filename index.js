@@ -1,40 +1,25 @@
 'use strict';
 
-const R = require('ramda');
+const { BASE_MAP } = require('./constants');
 
-const bases = require('./constants').BASE;
+const head                   = require('./helpers/head'),
+      xProd                  = require('./helpers/xProd'),
+      getRadixFromKey        = require('./helpers/getRadixFromKey'),
+      makeConversionFunction = require('./helpers/makeConversionFunction');
 
-const isConversion = arr => arr[0] != arr[1];
-
-const makeConversionFunction = R.curry((bases, arr) => {
-  const keyFrom  = arr[0],
-        keyTo    = arr[1],
-        baseFrom = bases[keyFrom],
-        baseTo   = bases[keyTo],
-        fnName   = R.compose(
-          R.join('2'),
-          R.map(R.take(3))
-        )(arr);
-
-  return {
-    [fnName] : (s) => parseInt(s, baseFrom).toString(baseTo)
-  };
+const allYour = baseFrom => ({
+  areBelongTo : baseTo => value => {
+    return parseInt(
+      value,
+      getRadixFromKey(baseFrom.slice(0, 3))
+    ).toString(
+      getRadixFromKey(baseTo.slice(0, 3))
+    );
+  }
 });
 
-const conversionFunctions = R.compose(
-  R.mergeAll,
-  R.map(makeConversionFunction(bases)),
-  R.filter(isConversion),
-  R.apply(R.xprod),
-  R.repeat(R.__, 2),
-  R.keys
-)(bases);
+const baseKeys     = BASE_MAP.map(head),
+      baseKeyPairs = xProd(baseKeys, baseKeys),
+      quickMethods = baseKeyPairs.map(makeConversionFunction);
 
-const allYour = R.curry((bases, base, s) => ({
-  areBelongTo : us => parseInt(s, bases[base]).toString(bases[us])
-}));
-
-module.exports = R.mergeAll([
-  { allYour : allYour(bases) },
-  conversionFunctions
-]);
+module.exports = Object.assign({}, { allYour }, ...quickMethods);
