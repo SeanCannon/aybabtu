@@ -17,7 +17,7 @@ Why use aybabtu then?
  - Your app could always use another dependency
  - Magic constants like `16` (base hex) and `10` (base dec) can confuse junior devs
  - Because `parseInt` and `toString` should never be seen together so we hide them for you
- - Someone set us up the bomb.
+ - Somebody set up us the bomb.
 
 ## Install
 
