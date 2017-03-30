@@ -20,6 +20,21 @@ Why use aybabtu then?
  - Because `parseInt` and `toString` should never be seen together so we hide them for you
  - Somebody set up us the bomb.
 
+## Limitations
+ 
+##### 32-bit limitation
+JavaScript caps bitwise operator support at 32 bits, so giving `aybabtu` a value larger than that [won't work](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Bitwise_Operators).
+
+A simple workaround is to break up your value into 32 bit chunks, for example: 
+
+```js
+const tooLargeBinary = '11111011000001010011100101111001010001110011100011011010';
+const wrongValue     = base.bin2hex(tooLargeBinary); // "fb0539794738d8"
+const rightValue     = tooLargeBinary.match(/.{1,32}/g).map(base.bin2hex).join(''); // "fb0539794738da"
+```
+
+
+
 ## Install
 
 ```
@@ -60,7 +75,7 @@ allYour('decimal').areBelongTo('binary')(50);  // '110010'
  - [Duodecimal](#Duodecimal)
  - [Hexadecimal](#Hexadecimal)
  - [Vigesimal](#Vigesimal)
- 
+  
 ## <a name="Binary">Binary</a>: Base 2
 
 ### Convert to Ternary
