@@ -18,6 +18,7 @@ const allYour = baseFrom => ({
   }
 });
 
+
 const baseKeys     = BASE_MAP.map(head),
       baseKeyPairs = xProd(baseKeys, baseKeys),
       quickMethods = baseKeyPairs.map(makeConversionFunction);

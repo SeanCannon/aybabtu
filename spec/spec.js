@@ -31,5 +31,5 @@ const makeAssertion = method => {
 };
 
 describe('all your', () => {
-  Object.keys(aybabtu).filter(isQuickMethod).map(makeAssertion);
+  Object.keys(aybabtu).filter(isQuickMethod).forEach(makeAssertion);
 });
