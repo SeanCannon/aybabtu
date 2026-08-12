@@ -24,16 +24,8 @@ Why use aybabtu then?
  - Somebody set up us the bomb.
 
 ## Limitations
- 
-##### No practical size limitation
-`aybabtu` converts values with string-based arithmetic, so there is no 32-bit (or 53-bit) precision ceiling. Values of any length work the same way:
-
-```js
-base.bin2hex('11111011000001010011100101111001010001110011100011011010'); // "fb0539794738da"
-```
 
 Only two practical bounds apply: values must fit within a base's digit set, and your environment's memory. Conversion relies on a pure string algorithm rather than JavaScript's `parseInt`/`toString`, so oversized values are never truncated.
-
 
 
 ## Install
@@ -53,13 +45,13 @@ $ npm test
 ```js
 const base = require('aybabtu');
 
-base.dec2hex('42');  // '2a'
+base.dec2hex('42'); // '2a'
 ```
 ES modules can import the same methods by name:
 ```js
 import { dec2bin, allYour } from 'aybabtu';
 
-dec2bin('50');                        // '110010'
+dec2bin('50');                                 // '110010'
 allYour('decimal').areBelongTo('binary')(50);  // '110010'
 ```
 Both entry points are provided (`index.js` for `require`, `index.mjs` for `import`), so either style works interchangeably.
@@ -67,7 +59,7 @@ Both entry points are provided (`index.js` for `require`, `index.mjs` for `impor
 ```js
 const { allYour } = require('aybabtu');
 
-allYour('decimal').areBelongTo('binary')(50);  // '110010'
+allYour('decimal').areBelongTo('binary')(50); // '110010'
 ```
 
 ## Supported Bases
