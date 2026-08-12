@@ -7,31 +7,32 @@
 
 
 ## Disclaimer
-Use of this library is quite silly since all it is really doing is this:
+Use of this library is quite silly since, for everyday-sized values, all it is really doing is this:
 
 ```
 parseInt(myValue, baseFrom).toString(baseTo)
 ```
+
+Except it isn't. Values that overflow JavaScript's safe integer range lose precision in `parseInt`, so `aybabtu` performs string-based arithmetic instead and converts them with full fidelity.
 
 Why use aybabtu then? 
  - Your app could always use another dependency
  - 31,200% unit test coverage (pay no attention to the coveralls badge)
  - Magic constants like `16` (base hex) and `10` (base dec) can confuse junior devs
  - Because `parseInt` and `toString` should never be seen together so we hide them for you
+ - Arbitrarily large values convert without precision loss
  - Somebody set up us the bomb.
 
 ## Limitations
  
-##### 32-bit limitation
-JavaScript caps bitwise operator support at 32 bits, so giving `aybabtu` a value larger than that [won't work](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Bitwise_Operators).
-
-A simple workaround is to break up your value into 32 bit chunks, for example: 
+##### No practical size limitation
+`aybabtu` converts values with string-based arithmetic, so there is no 32-bit (or 53-bit) precision ceiling. Values of any length work the same way:
 
 ```js
-const tooLargeBinary = '11111011000001010011100101111001010001110011100011011010';
-const wrongValue     = base.bin2hex(tooLargeBinary); // "fb0539794738d8"
-const rightValue     = tooLargeBinary.match(/.{1,32}/g).map(base.bin2hex).join(''); // "fb0539794738da"
+base.bin2hex('11111011000001010011100101111001010001110011100011011010'); // "fb0539794738da"
 ```
+
+Only two practical bounds apply: values must fit within a base's digit set, and your environment's memory. Conversion relies on a pure string algorithm rather than JavaScript's `parseInt`/`toString`, so oversized values are never truncated.
 
 
 
@@ -54,6 +55,14 @@ const base = require('aybabtu');
 
 base.dec2hex('42');  // '2a'
 ```
+ES modules can import the same methods by name:
+```js
+import { dec2bin, allYour } from 'aybabtu';
+
+dec2bin('50');                        // '110010'
+allYour('decimal').areBelongTo('binary')(50);  // '110010'
+```
+Both entry points are provided (`index.js` for `require`, `index.mjs` for `import`), so either style works interchangeably.
 ##### Using the master converter
 ```js
 const { allYour } = require('aybabtu');

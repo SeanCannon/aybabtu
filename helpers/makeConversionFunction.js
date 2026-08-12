@@ -2,7 +2,8 @@
 
 const getRadixFromKey = require('./getRadixFromKey'),
       head            = require('./head'),
-      last            = require('./last');
+      last            = require('./last'),
+      convertValue    = require('./convertValue');
 
 module.exports = pair => {
   const baseFrom = getRadixFromKey(head(pair)),
@@ -10,6 +11,6 @@ module.exports = pair => {
         method   = head(pair) + '2' + last(pair);
 
   return {
-    [method] : (s) => parseInt(s, baseFrom).toString(baseTo)
+    [method] : (s) => convertValue(s, baseFrom, baseTo)
   };
 };

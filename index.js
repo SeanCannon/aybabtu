@@ -5,14 +5,14 @@ const { BASE_MAP } = require('./constants');
 const head                   = require('./helpers/head'),
       xProd                  = require('./helpers/xProd'),
       getRadixFromKey        = require('./helpers/getRadixFromKey'),
-      makeConversionFunction = require('./helpers/makeConversionFunction');
+      makeConversionFunction = require('./helpers/makeConversionFunction'),
+      convertValue           = require('./helpers/convertValue');
 
 const allYour = baseFrom => ({
   areBelongTo : baseTo => value => {
-    return parseInt(
+    return convertValue(
       value,
-      getRadixFromKey(baseFrom.slice(0, 3))
-    ).toString(
+      getRadixFromKey(baseFrom.slice(0, 3)),
       getRadixFromKey(baseTo.slice(0, 3))
     );
   }
